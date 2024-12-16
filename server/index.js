@@ -12,13 +12,13 @@ dotenv.config();
 
 
 const PORT = process.env.PORT || 7000;
-const URL = process.env.MONGOURL;
+const URL = process.env.MONGO_URL;
 
-mongoose.connect(URL).then(()=>{
 
-    console.log("DB connected successfully");
-
-    app.listen(PORT, ()=>{
+mongoose.connect(URL, { useNewURLParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log("DB connected successfully");
+        app.listen(PORT, () => {
         console.log(`Server is running on port: ${PORT}`);
     })
 
